@@ -1,0 +1,11 @@
+FROM node:14
+
+WORKDIR /usr/src/app/chat_frontend
+
+COPY chat_frontend/ .
+
+RUN npm install
+
+EXPOSE 8000
+
+CMD ["npm", "start"]

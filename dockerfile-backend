@@ -1,0 +1,17 @@
+FROM python:3.8-slim
+
+WORKDIR /usr/src/app
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY . .
+
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+EXPOSE 3000
+
+ENV NAME World
+
+CMD ["python3", "chat_backend/manage.py", "runserver"]
